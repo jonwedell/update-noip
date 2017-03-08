@@ -1,15 +1,10 @@
 Update your no-ip.com domain name through crontab
 =================================================
 
-Reason
-------
-
-I created this script because my IP address does not change really often and I was bothered by the fact that www.noip.com sends email about your domain name expiring after more than 30 days without a change. To remedy this behavior I decided to write that script and run it into a scheduled job every 10 days.
-
-How does this work
+What does it do?
 ------------------
 
-The script can be run every 20 days and it will force your domain name to update with a wrong IP address and a moment after it will update it with the proper IP address. This will bypass the expiration rule.
+Run the script to update your IP on no-IP. I suggest running it using cron.
 
 Installation
 ------------
@@ -19,20 +14,12 @@ This little script requires the ``requests`` python module from http://docs.pyth
 
 .. code-block:: bash
 
-	git clone git@github.com:drivard/update-noip.git
+	git clone git@github.com:jonwedell/update-noip.git
 	
 	cd update-noip
 	
-	pip install -r requirements.txt
+	pip3 install -r requirements.txt
 	
-	# or
-	
-	pip install -U requests
-	
-	# or
-	 
-	easy_install requests
-
 
 Configuration
 =============
@@ -44,13 +31,12 @@ The script
 
 .. code-block:: bash
 	
-	git clone git@github.com:drivard/update-noip.git
+	git clone git@github.com:jonwedell/update-noip.git
 
 2. Edit the script with your username, password, hostname and ip addresses bag.
 
 .. code-block:: pycon
 	
-	IPS_BAG  = ["152.25.65.88", "154.58.69.25", "45.255.6.54"]
 	HOSTNAME = "yourhostname.no-ip.com"
 	USERNAME = "username"
 	PASSWORD = "password" 
@@ -61,13 +47,13 @@ To run the script once you edited the parameters.
 
 .. code-block:: bash
 	
-	python update_noip.py
+	python3 update_noip.py
 
 Crontab
 -------
 
 .. code-block:: bash
 
-	15 3 */10 * *   /usr/bin/python /<path_to_python_script>/update_noip.py >> /dev/null 2>&1
+	@hourly   /usr/bin/python3 /<path_to_python_script>/update_noip.py >> /dev/null 2>&1
 
 
