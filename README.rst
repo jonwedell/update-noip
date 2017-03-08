@@ -54,6 +54,6 @@ Crontab
 
 .. code-block:: bash
 
-	@hourly   /usr/bin/python3 /<path_to_python_script>/update_noip.py >> /dev/null 2>&1
+	@hourly   /usr/bin/python3 /<path_to_python_script>/update_noip.py
 
 
